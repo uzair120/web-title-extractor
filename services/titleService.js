@@ -1,7 +1,8 @@
+const async = require("async");
 const { formatUrl } = require("../utils/utils.js");
 const { fetchTitleWithCallback } = require("../helper/fetchTitleHelpers.js");
 
-// Fetch titles
+// Fetch titles using plain callbacks
 exports.fetchTitlesUsingCallbacks = (addresses, callback) => {
   if (!Array.isArray(addresses)) addresses = [addresses];
   let results = [];
@@ -17,5 +18,19 @@ exports.fetchTitlesUsingCallbacks = (addresses, callback) => {
         callback(null, results);
       }
     });
+  });
+};
+
+// Fetch titles using async.js
+exports.fetchTitlesUsingAsyncFlow = (addresses, callback) => {
+  if (!Array.isArray(addresses)) addresses = [addresses];
+  const formattedAddresses = addresses.map(formatUrl);
+
+  async.map(formattedAddresses, fetchTitleWithCallback, (err, results) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
   });
 };
