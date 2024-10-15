@@ -1,6 +1,11 @@
 const async = require("async");
+const rsvp = require("rsvp");
 const { formatUrl } = require("../utils/utils.js");
-const { fetchTitleWithCallback } = require("../helper/fetchTitleHelpers.js");
+const {
+  fetchTitleWithCallback,
+  fetchTitleWithPromise,
+  fetchTitleWithRSVP
+} = require("../helper/fetchTitleHelpers.js");
 
 // Fetch titles using plain callbacks
 exports.fetchTitlesUsingCallbacks = (addresses, callback) => {
@@ -33,4 +38,21 @@ exports.fetchTitlesUsingAsyncFlow = (addresses, callback) => {
       callback(null, results);
     }
   });
+};
+
+// Fetch titles using promises
+exports.fetchTitlesUsingPromises = (addresses) => {
+  if (!Array.isArray(addresses)) addresses = [addresses];
+  const formattedAddresses = addresses.map(formatUrl);
+
+  return Promise.all(formattedAddresses.map(fetchTitleWithPromise));
+};
+
+// Fetch titles using RSVP promises
+exports.fetchTitlesUsingRSVP = (addresses) => {
+  if (!Array.isArray(addresses)) addresses = [addresses];
+  const formattedAddresses = addresses.map(formatUrl);
+
+  // Using RSVP's Promise.all
+  return rsvp.Promise.all(formattedAddresses.map(fetchTitleWithRSVP));
 };

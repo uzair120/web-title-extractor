@@ -9,6 +9,12 @@ app.get("/I/want/title/callbacks", titleController.getTitlesWithCallbacks);
 // Route for Async.js Flow
 app.get("/I/want/title/asyncflow", titleController.getTitlesWithAsyncFlow);
 
+// Route for Promises
+app.get("/I/want/title/promises", titleController.getTitlesWithPromises);
+
+// Route for RVSP
+app.get("/I/want/title/rsvp", titleController.getTitlesWithRSVP);
+
 // Default 404 route for all other paths
 app.use((req, res) => {
   res.status(404).send("404 Not Found");

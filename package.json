@@ -19,6 +19,7 @@
   "homepage": "https://github.com/uzair120/web-title-extractor#readme",
   "dependencies": {
     "async": "^3.2.6",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "rsvp": "^4.8.5"
   }
 }
