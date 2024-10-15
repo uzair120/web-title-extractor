@@ -1,0 +1,23 @@
+{
+  "name": "web-title-extractor",
+  "version": "1.0.0",
+  "description": "APIs for fetching header of given URLs with three different scenarios,",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uzair120/web-title-extractor.git"
+  },
+  "author": "uzair.raza20@outlook.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uzair120/web-title-extractor/issues"
+  },
+  "homepage": "https://github.com/uzair120/web-title-extractor#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
